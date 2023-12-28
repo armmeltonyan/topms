@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Artisan;
+
+class duskJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private $name;
+    private $processId;
+    /**
+     * Create a new job instance.
+     */
+    public function __construct($name,$processId)
+    {
+        $this->name = $name;
+        $this->processId = $processId;
+    }
+
+    /**
+     * Execute the job.
+     */
+    public function handle(): void
+    {
+        Artisan::call('dusk:run',['name' => $this->name,'processId' => $this->processId]);
+    }
+}
