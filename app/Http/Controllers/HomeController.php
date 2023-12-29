@@ -31,7 +31,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $buyHistory = Iteration::where('user_id', auth()->id())->get();
+        return view('home',compact('buyHistory'));
     }
 
     public function buy(Request $request)

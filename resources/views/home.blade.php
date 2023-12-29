@@ -102,6 +102,41 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-8 mt-4">
+            <div class="card">
+                <div class="card-header">{{ __('Buy history') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Server</th>
+                                <th scope="col">Rounds</th>
+                                <th scope="col">Process datetime</th>
+                                <th scope="col">Processed</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($buyHistory as $row)
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{$row->server_name}}</td>
+                                <td>{{$row->iteration}}</td>
+                                <td>{{$row->process_at}}</td>
+                                <td>{{$row->processed == 1 ? 'Processed' : 'Pending'}}</td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
     <script>

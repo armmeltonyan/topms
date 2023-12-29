@@ -16,7 +16,7 @@ class RunDuskTests extends Command
      *
      * @var string
      */
-    protected $signature = 'dusk:run {name} {processId}';
+    protected $signature = 'dusk:run';
 
     /**
      * The console command description.
@@ -33,9 +33,11 @@ class RunDuskTests extends Command
         $iterations = Iteration::where('processed',0)->get();
         foreach ($iterations as $iteration) {
             if (Carbon::parse($iteration->process_at)->toDateString() == Carbon::now()->toDateString()){
-                if (Carbon::now()->gt(Carbon::parse($this->time_column))){
+                if (Carbon::now()->greaterThan(Carbon::parse($iteration->time))){
+                    echo 'processing';
+                    echo $iteration->server_name;
                     for ($x = 1; $x <= $iteration->iteration; $x++) {
-                        $response = $topMsService->buy($iteration->serverName,1);
+                        $response = $topMsService->buy($iteration->server_name,1);
                         sleep(1);
                     }
 
