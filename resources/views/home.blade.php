@@ -129,7 +129,11 @@
                                 <td>{{$row->server_name}}</td>
                                 <td>{{$row->iteration}}</td>
                                 <td>{{$row->process_at}}</td>
-                                <td>{{$row->processed == 1 ? 'Processed' : 'Pending'}}</td>
+                                @if($row->processed == 1)
+                                    <td><button class="btn btn-success" style="pointer-events: none">Processed</button></td>
+                                @else
+                                    <td><button class="btn btn-warning" style="pointer-events: none">Pending</button></td>
+                                @endif
                             </tr>
                             @endforeach
                             </tbody>
