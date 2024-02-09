@@ -43,11 +43,11 @@ class RunDuskTests extends Command
                     echo 'processing';
                     echo $iteration->server_name;
                     for ($x = 1; $x <= $iteration->iteration; $x++) {
-                        $response = $topMsService->buy($iteration->server_name,1);
+                        $response = $topMsService->buy($iteration->server_name,1,$iteration->monitoring);
                         sleep(1);
                     }
 
-                    if ($response['response']['success']) {
+                    if ($response['success']) {
                         Iteration::whereId($iteration->id)->update(['processed'=>1]);
                     }
                 }

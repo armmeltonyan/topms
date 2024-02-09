@@ -30,9 +30,10 @@ class AddProcessToQueue extends Command
     public function handle()
     {
         $server = '◄ AKIMOFF YouTube ► 45.136.204.158:27015';
-        $response = Http::withoutRedirecting()->get('http://127.0.0.1:5000/api?server='.urlencode($server));
+        http://127.0.0.1:5000/api?server=AKIMOFF YouTube&rounds=1&service=fine-boost
+        $response = Http::withoutRedirecting()->get('http://127.0.0.1:5000/api?server='.urlencode($server).'&rounds='.$iteration.'&service='.$service);
 
-// Assuming the Python API returns JSON, you can decode it
+        // Assuming the Python API returns JSON, you can decode it
         $data = $response->json();
         return $data;
 

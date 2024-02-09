@@ -64,7 +64,7 @@
 {{--                            </select>--}}
                             <div class="row mt-4" id="count-div">
                                 <div class="col-md-4">
-                                    <label for="" class="col-sm-5">Top-ms</label>
+                                    <label for="" class="col-sm-12">Top-ms</label>
                                 </div>
                                 <div class="col-md-4">
                                     <input type="number" name="monitorings[topms][round]" class="form-control col-sm-5">
@@ -72,6 +72,54 @@
                                 <div class="col-md-4">
                                     <input type="checkbox" id="scales" name="monitorings[topms][selected]" style="width: 50px;height: 30px"/>
 {{--                                    <input type="checkbox" name="monitorings[selected]" class="form-control">--}}
+                                </div>
+                            </div>
+                            <div class="row mt-4" id="count-div">
+                                <div class="col-md-4">
+                                    <label for="" class="col-sm-12">Fine-boost</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" name="monitorings[fine-boost][round]" class="form-control col-sm-5">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="checkbox" id="scales" name="monitorings[fine-boost][selected]" style="width: 50px;height: 30px"/>
+                                    {{--                                    <input type="checkbox" name="monitorings[selected]" class="form-control">--}}
+                                </div>
+                            </div>
+                            <div class="row mt-4" id="count-div">
+                                <div class="col-md-4">
+                                    <label for="" class="col-sm-12">cs-16</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" name="monitorings[cs16][round]" class="form-control col-sm-5">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="checkbox" id="scales" name="monitorings[cs16][selected]" style="width: 50px;height: 30px"/>
+                                    {{--                                    <input type="checkbox" name="monitorings[selected]" class="form-control">--}}
+                                </div>
+                            </div>
+                            <div class="row mt-4" id="count-div">
+                                <div class="col-md-4">
+                                    <label for="" class="col-sm-12">cs-booster</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" name="monitorings[cs-booster][round]" class="form-control col-sm-5">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="checkbox" id="scales" name="monitorings[cs-booster][selected]" style="width: 50px;height: 30px"/>
+                                    {{--                                    <input type="checkbox" name="monitorings[selected]" class="form-control">--}}
+                                </div>
+                            </div>
+                            <div class="row mt-4" id="count-div">
+                                <div class="col-md-4">
+                                    <label for="" class="col-sm-12">cs-clan</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" name="monitorings[cs-clan][round]" class="form-control col-sm-5">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="checkbox" id="scales" name="monitorings[cs-clan][selected]" style="width: 50px;height: 30px"/>
+                                    {{--                                    <input type="checkbox" name="monitorings[selected]" class="form-control">--}}
                                 </div>
                             </div>
                             <div class='mt-2'>
@@ -116,6 +164,7 @@
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Service</th>
                                 <th scope="col">Server</th>
                                 <th scope="col">Rounds</th>
                                 <th scope="col">Process datetime</th>
@@ -126,6 +175,7 @@
                             @foreach($buyHistory as $row)
                             <tr>
                                 <th scope="row">1</th>
+                                <td>{{$row->monitoring}}</td>
                                 <td>{{$row->server_name}}</td>
                                 <td>{{$row->iteration}}</td>
                                 <td>{{$row->process_at}}</td>

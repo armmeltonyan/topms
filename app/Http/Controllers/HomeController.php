@@ -46,13 +46,19 @@ class HomeController extends Controller
 //        foreach ($request->monitoring as $monitoring){
 //
 //        }
-//        dd($request->all());
         $insertArray = [];
         foreach ($request->monitorings as $monitoring => $round){
             if(isset($round['selected'])) {
                 foreach ($period as $date){
                     $combinedDateTime = Carbon::parse($date->toDateString() . ' ' . $request->time);
-                    $insertArray[] = ['user_id'=>auth()->id(),'monitoring'=>$monitoring,'iteration'=>$round['round'],'process_at'=>$combinedDateTime,'server_name'=>$request->serverName,'time'=>$request->time];
+                    $serverName = match ($monitoring) {
+                        'fine-boost' => 'AKIMOFF YouTube',
+                        'cs-booster' => 'AKIMOFF YouTube',
+                        'cs-clan' => 'AKIMOFF YouTube',
+                        'cs16' => 'AKIMOFF YouTube',
+                        default => $request->serverName
+                    };
+                    $insertArray[] = ['user_id'=>auth()->id(),'monitoring'=>$monitoring,'iteration'=>$round['round'],'process_at'=>$combinedDateTime,'server_name'=>$serverName,'time'=>$request->time];
                 }
             }
         }

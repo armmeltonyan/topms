@@ -3,14 +3,21 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class TopMsService
 {
-    public function buy(string $serverName,string $rounds)
+    public function buy(string $serverName,string $rounds, string $service)
     {
-        $server = '◄ AKIMOFF YouTube ► 45.136.204.158:27015';
-        $response = Http::withoutRedirecting()->get('http://127.0.0.1:5000/api?server='.urlencode($server).'&rounds='.$rounds);
-
-        return $response->json();
+        try {
+            $response = Http::withoutRedirecting()->get('http://127.0.0.1:5000/api?server='.urlencode($serverName).'&rounds='.$rounds.'&service='.$service);
+//        $response = Http::withoutRedirecting()->get('http://127.0.0.1:5000/api?server='.urlencode($server).'&rounds='.$rounds);
+            Log::error('service: '.$service);
+            Log::error('server: '. $serverName);
+            Log::error($response->json());
+            return $response->json();
+        }catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+        }
     }
 }
