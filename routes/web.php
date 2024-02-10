@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test',[\App\Http\Controllers\DuskController::class,'test']);
 Route::get('/', function () {
     return redirect()->to('/login');
 });
