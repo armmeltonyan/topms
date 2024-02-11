@@ -48,7 +48,9 @@ class RunDuskTests extends Command
                     }
 
                     if ($response['success']) {
-                        Iteration::whereId($iteration->id)->update(['processed'=>1]);
+                        Iteration::whereId($iteration->id)->update(['processed'=>1,'response_msg'=>$response['msg']]);
+                    }else{
+                        Iteration::whereId($iteration->id)->update(['response_msg'=>$response['msg']]);
                     }
                 }
             }

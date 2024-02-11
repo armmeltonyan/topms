@@ -169,6 +169,7 @@
                                 <th scope="col">Rounds</th>
                                 <th scope="col">Process datetime</th>
                                 <th scope="col">Processed</th>
+                                <th scope="col">Last message</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -184,6 +185,7 @@
                                 @else
                                     <td><button class="btn btn-warning" style="pointer-events: none">Pending</button></td>
                                 @endif
+                                <td>{{$row->response_msg}}</td>
                             </tr>
                             @endforeach
                             </tbody>
