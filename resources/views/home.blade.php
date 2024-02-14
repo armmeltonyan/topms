@@ -67,10 +67,10 @@
                                     <label for="" class="col-sm-12">Top-ms</label>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="number" name="monitorings[topms][round]" class="form-control col-sm-5">
+                                    <input type="number" name="monitorings[topmsv][round]" class="form-control col-sm-5">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="checkbox" id="scales" name="monitorings[topms][selected]" style="width: 50px;height: 30px"/>
+                                    <input type="checkbox" id="scales" name="monitorings[topmsv][selected]" style="width: 50px;height: 30px"/>
 {{--                                    <input type="checkbox" name="monitorings[selected]" class="form-control">--}}
                                 </div>
                             </div>

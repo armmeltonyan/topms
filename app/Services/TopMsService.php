@@ -10,7 +10,7 @@ class TopMsService
     public function buy(string $serverName,string $rounds, string $service)
     {
         try {
-            $response = Http::withoutRedirecting()->get('http://127.0.0.1:5000/api?server='.urlencode($serverName).'&rounds='.$rounds.'&service='.$service);
+            $response = Http::withoutRedirecting()->get('http://89.105.198.151:8001/api?server='.urlencode($serverName).'&rounds='.$rounds.'&service='.$service);
 //        $response = Http::withoutRedirecting()->get('http://127.0.0.1:5000/api?server='.urlencode($server).'&rounds='.$rounds);
             Log::error('service: '.$service);
             Log::error('server: '. $serverName);
