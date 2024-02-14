@@ -44,6 +44,7 @@ class RunDuskTests extends Command
                     echo $iteration->server_name;
                     for ($x = 1; $x <= $iteration->iteration; $x++) {
                         $response = $topMsService->buy($iteration->server_name,1,$iteration->monitoring);
+                        Log::error("response: ".$response);
                         sleep(1);
                     }
 
