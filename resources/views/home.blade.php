@@ -98,18 +98,18 @@
                                     {{--                                    <input type="checkbox" name="monitorings[selected]" class="form-control">--}}
                                 </div>
                             </div>
-                            <div class="row mt-4" id="count-div">
-                                <div class="col-md-4">
-                                    <label for="" class="col-sm-12">cs-booster</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="number" name="monitorings[cs-booster][round]" class="form-control col-sm-5">
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="checkbox" id="scales" name="monitorings[cs-booster][selected]" style="width: 50px;height: 30px"/>
-                                    {{--                                    <input type="checkbox" name="monitorings[selected]" class="form-control">--}}
-                                </div>
-                            </div>
+{{--                            <div class="row mt-4" id="count-div">--}}
+{{--                                <div class="col-md-4">--}}
+{{--                                    <label for="" class="col-sm-12">cs-booster</label>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-4">--}}
+{{--                                    <input type="number" name="monitorings[cs-booster][round]" class="form-control col-sm-5">--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-4">--}}
+{{--                                    <input type="checkbox" id="scales" name="monitorings[cs-booster][selected]" style="width: 50px;height: 30px"/>--}}
+{{--                                    --}}{{--                                    <input type="checkbox" name="monitorings[selected]" class="form-control">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="row mt-4" id="count-div">
                                 <div class="col-md-4">
                                     <label for="" class="col-sm-12">cs-clan</label>
