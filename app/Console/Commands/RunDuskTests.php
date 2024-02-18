@@ -42,26 +42,31 @@ class RunDuskTests extends Command
                 if (Carbon::now()->greaterThan(Carbon::parse($iteration->time))){
                     echo 'processing';
                     echo $iteration->server_name;
-                    for ($x = 1; $x <= $iteration->iteration; $x++) {
-                        $response = $topMsService->buy($iteration->server_name,1,$iteration->monitoring);
-                        Log::error("response: ". json_encode($response));
-                        sleep(1);
-                    }
+                    try {
+                        for ($x = 1; $x <= $iteration->iteration; $x++) {
+                            $response = $topMsService->buy($iteration->server_name,1,$iteration->monitoring);
+                            Log::error("response: ". json_encode($response));
+                            sleep(1);
+                        }
 
-                    if (isset($response['success'])){
-                        if ($response['success']) {
-                            Iteration::whereId($iteration->id)->update(['processed'=>1,'response_msg'=>$response['msg']]);
-                        }else{
-                            Iteration::whereId($iteration->id)->update(['response_msg'=>$response['msg']]);
+                        if (isset($response['success'])){
+                            if ($response['success']) {
+                                Iteration::whereId($iteration->id)->update(['processed'=>1,'response_msg'=>$response['msg']]);
+                            }else{
+                                Iteration::whereId($iteration->id)->update(['response_msg'=>$response['msg']]);
+                            }
                         }
-                    }
-                    if (isset($response['response'])) {
-                        $response = $response['response'];
-                        if ($response['success']) {
-                            Iteration::whereId($iteration->id)->update(['processed'=>1,'response_msg'=>$response['msg']]);
-                        }else{
-                            Iteration::whereId($iteration->id)->update(['response_msg'=>$response['msg']]);
+                        if (isset($response['response'])) {
+                            $response = $response['response'];
+                            if ($response['success']) {
+                                Iteration::whereId($iteration->id)->update(['processed'=>1,'response_msg'=>$response['msg']]);
+                            }else{
+                                Iteration::whereId($iteration->id)->update(['response_msg'=>$response['msg']]);
+                            }
                         }
+                    }catch (\Exception $exception) {
+                        Log::error('Error in '. $iteration->monitoring);
+                        Log::error($exception->getMessage());
                     }
                 }
             }
