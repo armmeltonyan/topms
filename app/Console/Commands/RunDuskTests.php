@@ -48,10 +48,20 @@ class RunDuskTests extends Command
                         sleep(1);
                     }
 
-                    if ($response['success']) {
-                        Iteration::whereId($iteration->id)->update(['processed'=>1,'response_msg'=>$response['msg']]);
-                    }else{
-                        Iteration::whereId($iteration->id)->update(['response_msg'=>$response['msg']]);
+                    if (isset($response['success'])){
+                        if ($response['success']) {
+                            Iteration::whereId($iteration->id)->update(['processed'=>1,'response_msg'=>$response['msg']]);
+                        }else{
+                            Iteration::whereId($iteration->id)->update(['response_msg'=>$response['msg']]);
+                        }
+                    }
+                    if (isset($response['response'])) {
+                        $response = $response['response'];
+                        if ($response['success']) {
+                            Iteration::whereId($iteration->id)->update(['processed'=>1,'response_msg'=>$response['msg']]);
+                        }else{
+                            Iteration::whereId($iteration->id)->update(['response_msg'=>$response['msg']]);
+                        }
                     }
                 }
             }
